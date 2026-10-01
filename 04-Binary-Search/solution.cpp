@@ -1,42 +1,34 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 int main() {
-    int n;
+    int V, n;
+    cin >> V;
     cin >> n;
 
-    int arr[100];
+    vector<int> arr(n);
 
     for (int i = 0; i < n; i++) {
         cin >> arr[i];
     }
 
-    int key;
-    cin >> key;
-
     int low = 0;
     int high = n - 1;
-    int found = -1;
 
     while (low <= high) {
         int mid = (low + high) / 2;
 
-        if (arr[mid] == key) {
-            found = mid;
-            break;
+        if (arr[mid] == V) {
+            cout << mid;
+            return 0;
         }
-        else if (arr[mid] < key) {
+        else if (arr[mid] < V) {
             low = mid + 1;
         }
         else {
             high = mid - 1;
         }
     }
-
-    if (found != -1)
-        cout << "Element found at index " << found;
-    else
-        cout << "Element not found";
 
     return 0;
 }
